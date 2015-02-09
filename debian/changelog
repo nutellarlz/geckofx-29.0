@@ -1,3 +1,12 @@
+geckofx29 (29.0.0.18) unstable; urgency=medium
+
+  * GeckoWebBrowser::Window property implementation
+  * Hookup missing linux methods
+  * Add Debug warnings if STAThread attribute is missing from app entry point
+  * Fix some Linux Dispose problems
+
+ -- Eberhard Beilharz <eb1@sil.org>  Mon, 09 Feb 2015 10:19:41 +0100
+
 geckofx29 (29.0.0.17) unstable; urgency=medium
 
   * Fix a context menu bug.  See README.txt for details.
