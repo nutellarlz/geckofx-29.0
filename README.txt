@@ -2,6 +2,13 @@ Geckofx is licensed under the Mozilla Public License Version.
 
 == Changelog ==
 
+== v29.0-0.18 ==
+
+1. GeckoWebBrowser::Window property implementation
+2. Hookup missing linux methods
+3. Add Debug warnings if STAThread attribute is missing from app entry point
+4. Fix some Linux Dispose problems
+
 == v29.0-0.17 ==
 
 Linux only tag.
