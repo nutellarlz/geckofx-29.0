@@ -34,7 +34,8 @@ namespace Gecko
 
 		public static void UnregisterWindow(nsIXULWindow window)
 		{
-			_windowMediator.Instance.UnregisterWindow( window );
+			if (_windowMediator != null && _windowMediator.Instance != null)
+				_windowMediator.Instance.UnregisterWindow( window );
 			//_windowCount --;
 		}
 		/// <summary>
