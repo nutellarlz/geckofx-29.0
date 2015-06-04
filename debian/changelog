@@ -1,3 +1,9 @@
+geckofx29 (29.0.0.20) unstable; urgency=medium
+
+  * Protect against a rare shutdown crash in Gecko.WindowMediator.
+
+ -- Stephen McConnel <stephen_mcconnel@sil.org>  Thu, 04 Jun 2015 15:00:39 -0500
+
 geckofx29 (29.0.0.18) unstable; urgency=medium
 
   * GeckoWebBrowser::Window property implementation

@@ -2,6 +2,10 @@ Geckofx is licensed under the Mozilla Public License Version.
 
 == Changelog ==
 
+== v29.0-0.20 ==
+
+1. Protect against a rare shutdown crash in Gecko.WindowMediator.UnregisterWindow().
+
 == v29.0-0.19 ==
 
 Linux only tag.
