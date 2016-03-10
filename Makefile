@@ -5,16 +5,22 @@ FF_VERSION=`firefox --version|cut -d\  -f3`
 VERSION="$(FF_VERSION).1"
 CONFIGURATION ?= Debug_Linux
 
+UBUNTU_PLATFORM_VER:=$(shell lsb_release -rs)
+ifeq ($(UBUNTU_PLATFORM_VER),16.04)
+ FRAMEWORK_OVERRIDE = "/p:TargetFrameworkVersion=v4.5"
+endif
+
+
 all: Geckofx
 
 clean:
-	xbuild /p:Configuration=$(CONFIGURATION) Geckofx.sln /target:clean
+	xbuild /p:Configuration=$(CONFIGURATION) Geckofx.sln /target:clean $(FRAMEWORK_OVERRIDE)
 	rm -rf */obj */bin
 	cd Geckofx-Core/Linux && make clean
 
 Geckofx: Geckofx.sln
 	echo "Configuration=$(CONFIGURATION); VERSION=$(VERSION)"
-	xbuild /p:Configuration=$(CONFIGURATION) Geckofx.sln
+	xbuild /p:Configuration=$(CONFIGURATION) Geckofx.sln $(FRAMEWORK_OVERRIDE)
 	cd Geckofx-Core/Linux && make && cp geckofix.so ../bin/x86/$(CONFIGURATION)/
 
 test: Geckofx
@@ -23,7 +29,7 @@ test: Geckofx
 	cd GeckoFxTest/bin/x86/$(CONFIGURATION) &&  LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/lib/firefox/ MONO_PATH=/usr/lib/cli/gdk-sharp-2.0/ LD_PRELOAD=../../../Geckofx-Core/Linux/geckofix.so PATH=/usr/local/bin:${PATH} ./GeckoFxTest.sh
 
 unittest: GeckofxUnitTests/GeckofxUnitTests.csproj
-	cd GeckofxUnitTests && xbuild GeckofxUnitTests.csproj
+	cd GeckofxUnitTests && xbuild GeckofxUnitTests.csproj $(FRAMEWORK_OVERRIDE)
 
 runtests: unittest Geckofx
 	cd GeckofxUnitTests/bin/Debug && LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/lib/firefox/ MONO_PATH=/usr/lib/cli/gdk-sharp-2.0/ LD_PRELOAD=../../../Geckofx-Core/Linux/geckofix.so PATH=/usr/local/bin:${PATH} mono GeckofxUnitTests.exe
