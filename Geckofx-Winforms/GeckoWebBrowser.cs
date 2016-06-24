@@ -978,16 +978,17 @@ namespace Gecko
 				if (WebBrowser == null)
 					return null;
 
+                var domDocument = Window.DomWindow.GetDocumentAttribute().AsComPtr();
+
 				if (_Document != null)
 				{
-					var domDocument = Window.DomWindow.GetDocumentAttribute();
-					if (_Document.NativeDomDocument == domDocument)
+					if (_Document.NativeDomDocument == domDocument.Instance)
 						return _Document;
 					// In some situations when ajax is used dom document wrapper is 1 per page,
 					// therefore we have to create a new one.
 					_Document.Dispose();
 				}
-				_Document = GeckoDomDocument.CreateDomDocumentWraper(Window.DomWindow.GetDocumentAttribute());
+                _Document = GeckoDomDocument.CreateDomDocumentWraper(domDocument.Instance);
 				return _Document;
 			}
 		}
