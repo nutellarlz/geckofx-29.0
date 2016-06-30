@@ -44,7 +44,7 @@ namespace GeckofxUnitTests
 
 			int freeCount = Marshal.ReleaseComObject( item );
 
-			Assert.AreEqual( 2, comCount );
+			Assert.AreEqual( 1, comCount );
 			Assert.AreEqual( 1, runtimeWrappersCount );
 			Assert.AreEqual( 0, freeCount );
 		}

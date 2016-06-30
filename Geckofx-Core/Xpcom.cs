@@ -505,7 +505,10 @@ namespace Gecko
 		{
 			Guid iid = typeof(TInterfaceType).GUID;
 			IntPtr ptr = ComponentManager.CreateInstanceByContractID(contractID, null, ref iid);
-			return (TInterfaceType)Xpcom.GetObjectForIUnknown(ptr);
+            var obj = (TInterfaceType)GetObjectForIUnknown(ptr);
+            // now owned by the RCW.
+            Marshal.Release(ptr);
+		    return obj;
 		}
 
 		/// <summary>
