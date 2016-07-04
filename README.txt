@@ -2,6 +2,11 @@ Geckofx is licensed under the Mozilla Public License Version.
 
 == Changelog ==
 
+== v29.0-0.22 ==
+
+1. Add RemoveMessageEventListener methods corresponding to the AddMessageEventListener methods
+2. Memory leak fixes.
+
 == v29.0-0.20 ==
 
 1. Protect against a rare shutdown crash in Gecko.WindowMediator.UnregisterWindow().
