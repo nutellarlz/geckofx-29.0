@@ -2,10 +2,19 @@ Geckofx is licensed under the Mozilla Public License Version.
 
 == Changelog ==
 
+== v29.0-0.23 ==
+
+1. Memory leak fixes.
+
 == v29.0-0.22 ==
 
+1. Remove a Linux TODO: (Reparenting back before destroying window)
+2. Fix Linux message "Gdk-WARNING **: GdkWindow ?????? unexpectedly destroyed"
+   (Both of these were backported from GeckoFX-33.0.)
+
+== v29.0-0.21
+
 1. Add RemoveMessageEventListener methods corresponding to the AddMessageEventListener methods
-2. Memory leak fixes.
 
 == v29.0-0.20 ==
 
